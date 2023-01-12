@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
+import Protected from "./components/Protected";
+import Products from "./components/Products";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 function App() {
+  const [isLoggedIn, setisLoggedIn] = useState<any>(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route
+          path="/products"
+          element={
+            <Protected isLoggedIn={isLoggedIn}>
+              <Products setisLoggedIn={setisLoggedIn} />
+            </Protected>
+          }
+        />
+        <Route
+          path="/signup"
+          element={<Signup setisLoggedIn={setisLoggedIn} />}
+        />
+        <Route path="/" element={<Login setisLoggedIn={setisLoggedIn} />} />
+      </Routes>
     </div>
   );
 }
-
 export default App;
