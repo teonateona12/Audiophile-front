@@ -30,7 +30,7 @@ export default function Signup({ setisLoggedIn }: any) {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/signup",
+        "https://audiophile-r04o.onrender.com/api/signup",
         formData
       );
       setisLoggedIn(true);
