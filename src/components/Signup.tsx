@@ -19,7 +19,11 @@ import { Link } from "react-router-dom";
 export default function Signup({ setisLoggedIn }: any) {
   const navigate = useNavigate();
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const signup = async (data: any) => {
     const formData = new FormData();
@@ -43,14 +47,26 @@ export default function Signup({ setisLoggedIn }: any) {
     <MainCont>
       <Title>Sign Up</Title>
       <Form onSubmit={handleSubmit(signup)}>
-        <Input type="string" {...register("name")} placeholder="name"></Input>
-        <Input type="string" {...register("email")} placeholder="email"></Input>
+        <Input
+          type="string"
+          {...register("name", { required: true })}
+          placeholder="name"
+        ></Input>
+        {errors.name && <Error>Please write name</Error>}
+        <Input
+          type="string"
+          {...register("email", { required: true })}
+          placeholder="email"
+        ></Input>
+        {errors.email && <Error>Please write email</Error>}
         <Input
           type="password"
-          {...register("password")}
+          {...register("password", { required: true })}
           placeholder="password"
         ></Input>
-        <Input type="file" {...register("avatar")}></Input>
+        {errors.password && <Error>Please write password</Error>}
+        <Input type="file" {...register("avatar", { required: true })}></Input>
+        {errors.avatar && <Error>Please upload image</Error>}
         <Button type="submit">Create an account</Button>
         <Container>
           <Text>Already have an account?</Text>
@@ -74,4 +90,11 @@ export const MainCont = styled.div`
   @media (min-width: 1200px) {
     margin: 12% 30%;
   }
+`;
+
+export const Error = styled.small`
+  color: red;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
 `;

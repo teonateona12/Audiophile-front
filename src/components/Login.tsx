@@ -1,13 +1,19 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
-import { MainCont } from "./Signup";
+import { MainCont, Error } from "./Signup";
 
 export default function Login({ setisLoggedIn }: any) {
-  const { register, handleSubmit } = useForm();
+  const [error, setError] = useState<string>("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
 
   const login = async (data: any) => {
@@ -23,6 +29,7 @@ export default function Login({ setisLoggedIn }: any) {
       setisLoggedIn(true);
       navigate("/products");
     } catch (error) {
+      setError("Invalid Email/Password");
       console.log(error);
     }
   };
@@ -30,13 +37,20 @@ export default function Login({ setisLoggedIn }: any) {
     <MainCont>
       <Title>Log In</Title>
       <Form onSubmit={handleSubmit(login)}>
-        <Input type="string" {...register("email")} placeholder="email"></Input>
+        <Input
+          type="string"
+          {...register("email", { required: true })}
+          placeholder="email"
+        ></Input>
+        {errors.email && <Error>Please write email</Error>}
+
         <Input
           type="password"
-          {...register("password")}
+          {...register("password", { required: true })}
           placeholder="password"
         ></Input>
-
+        {errors.password && <Error>Please write password</Error>}
+        <Error>{error}</Error>
         <Button type="submit">Login to your account</Button>
         <Container>
           <Text>Don’t have an account?</Text>
@@ -57,17 +71,17 @@ export const Title = styled.h1`
 `;
 export const Input = styled.input`
   padding: 8px;
-
+  margin-top: 10px;
   width: 95%;
 `;
 export const Form = styled.form`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 `;
 export const Button = styled.button`
   padding: 5px;
+  margin-top: 15px;
 `;
 export const Container = styled.div`
   display: flex;
