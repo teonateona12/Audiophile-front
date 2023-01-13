@@ -42,10 +42,6 @@ const Image = styled.img`
   @media (min-width: 768px) {
     margin-top: -15%;
   }
-  /* @media (min-width: 1440px) {
-    text-align: left;
-    margin: 0;
-  } */
 `;
 const Text = styled.p`
   text-align: center;
