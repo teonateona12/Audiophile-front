@@ -34,32 +34,34 @@ export default function Login({ setisLoggedIn }: any) {
     }
   };
   return (
-    <MainCont>
-      <Title>Log In</Title>
-      <Form onSubmit={handleSubmit(login)}>
-        <Input
-          type="string"
-          {...register("email", { required: true })}
-          placeholder="email"
-        ></Input>
-        {errors.email && <Error>Please write email</Error>}
+    <div>
+      <MainCont>
+        <Title>Log In</Title>
+        <Form onSubmit={handleSubmit(login)}>
+          <Input
+            type="string"
+            {...register("email", { required: true })}
+            placeholder="email"
+          ></Input>
+          {errors.email && <Error>Please write email</Error>}
 
-        <Input
-          type="password"
-          {...register("password", { required: true })}
-          placeholder="password"
-        ></Input>
-        {errors.password && <Error>Please write password</Error>}
-        <Error>{error}</Error>
-        <Button type="submit">Login to your account</Button>
-        <Container>
-          <Text>Don’t have an account?</Text>
-          <ButtonSignLog>
-            <Link to="/signup">Sign Up</Link>
-          </ButtonSignLog>
-        </Container>
-      </Form>
-    </MainCont>
+          <Input
+            type="password"
+            {...register("password", { required: true })}
+            placeholder="password"
+          ></Input>
+          {errors.password && <Error>Please write password</Error>}
+          <Error>{error}</Error>
+          <Button type="submit">Login to your account</Button>
+          <Container>
+            <Text>Don’t have an account?</Text>
+            <ButtonSignLog>
+              <Link to="/signup">Sign Up</Link>
+            </ButtonSignLog>
+          </Container>
+        </Form>
+      </MainCont>
+    </div>
   );
 }
 

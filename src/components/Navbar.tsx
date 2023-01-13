@@ -19,37 +19,20 @@ const Navbar = ({ setisLoggedIn }: any) => {
         <Img src={card} />
       </Nav>
       <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
-      <Category>text</Category>
-      {nav && (
-        <CategoryDiv>
-          <Category>headphones</Category>
-          <Category>headphones</Category>
-          <Category>headphones</Category>
-        </CategoryDiv>
-      )}
     </MainCont>
   );
 };
 export default Navbar;
 
-const Div = styled.div``;
 const Button = styled.button`
   display: flex;
   margin: auto;
   margin-top: 5%;
 `;
-const Category = styled.p`
-  color: red;
-`;
-const CategoryDiv = styled.div`
-  background-color: white;
-  position: absolute;
-  width: 100%;
-  margin-top: -5%;
-  left: 0;
-`;
+
 const MainCont = styled.div`
   padding: 30px;
+  background-color: black;
 `;
 const Nav = styled.nav`
   display: flex;

@@ -6,7 +6,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState<any>(null);
+  const [isLoggedIn, setisLoggedIn] = useState<any>(true);
 
   return (
     <div>
