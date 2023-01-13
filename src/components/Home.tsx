@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import image from "../images/home/mobile/image-header.jpg";
+import Category from "./Category";
 
 export default function () {
   return (
@@ -17,14 +18,27 @@ export default function () {
           <Button>SEE PRODUCT</Button>
         </Container>
       </Div>
-      <h1>heelo</h1>
+      <Category CategoryDiv={CategoryDiv} />
     </MainCont>
   );
 }
-const MainCont = styled.div`
-  background-color: #191919;
+const CategoryDiv = styled.div`
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 90px;
+  margin-top: 20%;
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+  @media (min-width: 1440px) {
+    margin: 10% 10%;
+  }
 `;
+const MainCont = styled.div``;
 const Div = styled.div`
+  background-color: #191919;
   position: relative;
   @media (min-width: 1440px) {
     display: flex;
