@@ -1,9 +1,41 @@
 import React from "react";
 import styled from "styled-components";
 import image from "../images/home/mobile/image-header.jpg";
-import Category from "./Category";
+import image1 from "../images/home/mobile/image-speaker-zx9.png";
+import image2 from "../images/home/mobile/image-speaker-zx7.jpg";
+import image3 from "../images/home/tablet/image-speaker-zx7.jpg";
+import image4 from "../images/home/desktop/image-speaker-zx7.jpg";
+import image5 from "../images/home/mobile/image-earphones-yx1.jpg";
+import image6 from "../images/shared/mobile/image-best-gear.jpg";
+import image7 from "../images/shared/tablet/image-best-gear.jpg";
+import image8 from "../images/shared/desktop/image-best-gear.jpg";
 
-export default function () {
+import Category from "./Category";
+import { useEffect, useState } from "react";
+import {
+  MainCont,
+  Container,
+  TextH1,
+  TextH2,
+  Button,
+  Orange,
+  ImageOrange,
+  ImageGreyDesk,
+  ImageGreyMob,
+  ImageGreyTab,
+  Cont,
+  Name,
+  Grey,
+  TextP,
+  SeeProduct,
+  SeeProduct2,
+  ContainerInside,
+  H4,
+  DarkDiv,
+  ImageDesk,
+} from "./Styles";
+
+export default function ({ items }: any) {
   return (
     <MainCont>
       <Div>
@@ -18,51 +50,106 @@ export default function () {
           <Button>SEE PRODUCT</Button>
         </Container>
       </Div>
-      <Category CategoryDiv={CategoryDiv} />
+
+      <Category />
+
+      <Orange>
+        <ImageOrange src={image1} />
+        <Cont>
+          <Name>ZX9 SPEAKER</Name>
+          <TextP>
+            Upgrade to premium speakers that are phenomenally built to deliver
+            truly remarkable sound.
+          </TextP>
+          <SeeProduct>SEE PRODUCT</SeeProduct>
+        </Cont>
+      </Orange>
+
+      <Grey>
+        <ImageGreyMob src={image2} />
+        <ImageGreyTab src={image3} />
+        <ImageGreyDesk src={image4} />
+        <ContainerInside>
+          <H4>ZX7 SPEAKER</H4>
+          <SeeProduct2>SEE PRODUCT</SeeProduct2>
+        </ContainerInside>
+      </Grey>
+
+      <DarkDiv>
+        <Img src={image5} />
+        <Container2>
+          <H4>YX1 EARPHONES</H4>
+          <SeeProduct2>SEE PRODUCT</SeeProduct2>
+        </Container2>
+      </DarkDiv>
+
+      <LastDiv>
+        <ImageGreyMob src={image6} />
+        <ImageGreyTab src={image7} />
+        <ImageDesk src={image8} />
+        <TextDiv>
+          <Txt>
+            BRINGING YOU THE <span>BEST</span> AUDIO GEAR
+          </Txt>
+          <Paragraph>
+            Located at the heart of New York City, Audiophile is the premier
+            store for high end headphones, earphones, speakers, and audio
+            accessories. We have a large showroom and luxury demonstration rooms
+            available for you to browse and experience a wide range of our
+            products. Stop by our store to meet some of the fantastic people who
+            make Audiophile the best place to buy your portable audio equipment.
+          </Paragraph>
+        </TextDiv>
+      </LastDiv>
     </MainCont>
   );
 }
-const CategoryDiv = styled.div`
-  padding: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 90px;
-  margin-top: 20%;
-  @media (min-width: 768px) {
-    flex-wrap: nowrap;
-    gap: 20px;
-  }
+const TextDiv = styled.div`
   @media (min-width: 1440px) {
-    margin: 10% 10%;
+    margin-top: 5%;
   }
 `;
-const MainCont = styled.div``;
-const Div = styled.div`
-  background-color: #191919;
-  position: relative;
+const Paragraph = styled.p`
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 25px;
+  text-align: center;
+  color: #000000;
+  opacity: 0.5;
+  @media (min-width: 1440px) {
+    text-align: left;
+  }
+`;
+const Txt = styled.h2`
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 38px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #000000;
+  margin: 30px 0;
+  @media (min-width: 1440px) {
+    text-align: left;
+  }
+`;
+export const LastDiv = styled.div`
+  margin: 24px;
+  margin-top: 15%;
   @media (min-width: 1440px) {
     display: flex;
-    flex-direction: row-reverse;
-    padding: 0 10%;
+    margin: 0 12% 0 12%;
+    gap: 15%;
   }
 `;
-const Image = styled.img`
-  margin: auto;
-  display: flex;
-`;
-const Container = styled.div`
-  position: absolute;
-  top: 10%;
+const Img = styled.img`
   width: 100%;
-  @media (min-width: 1440px) {
-    position: inherit;
-    padding-top: 20%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
 `;
-const Text = styled.p`
+
+const Container2 = styled.div`
+  padding: 50px;
+  background-color: #f1f1f1;
+`;
+export const Text = styled.p`
   text-align: center;
   letter-spacing: 10px;
   color: #ffffff;
@@ -72,45 +159,16 @@ const Text = styled.p`
     text-align: left;
   }
 `;
-const TextH1 = styled.h1`
-  text-align: center;
-  letter-spacing: 1.28571px;
-  color: #ffffff;
-  margin: 16px 0 24px 0;
-  @media (min-width: 768px) {
-    font-size: 56px;
-    line-height: 58px;
-    margin: 30px;
-  }
+export const Div = styled.div`
+  background-color: #191919;
+  position: relative;
   @media (min-width: 1440px) {
-    text-align: left;
-    margin: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0 10%;
   }
 `;
-const TextH2 = styled.h2`
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 25px;
-  text-align: center;
-  color: #ffffff;
-  opacity: 0.75;
-  width: 65%;
-  margin: auto;
-  @media (min-width: 1440px) {
-    text-align: left;
-    margin: 0;
-  }
-`;
-const Button = styled.button`
-  color: #ffffff;
-  background-color: #d87d4a;
-  padding: 15px 30px;
-  border: none;
+export const Image = styled.img`
   margin: auto;
   display: flex;
-  margin-top: 28px;
-  @media (min-width: 1440px) {
-    margin: 0;
-    width: 50%;
-  }
 `;

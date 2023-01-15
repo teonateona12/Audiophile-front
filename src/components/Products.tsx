@@ -6,11 +6,12 @@ import { useEffect } from "react";
 
 export default function Products({ setisLoggedIn }: any) {
   const [data, setData] = useState<any>([]);
-  console.log(data);
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/products");
+        const response = await axios.get(
+          "https://audiophile-r04o.onrender.com/api/products"
+        );
         setData(response.data);
       } catch (error) {
         console.log(error);
@@ -21,7 +22,7 @@ export default function Products({ setisLoggedIn }: any) {
   return (
     <div>
       <Navbar setisLoggedIn={setisLoggedIn} />
-      <Home />
+      <Home items={data} />
     </div>
   );
 }
