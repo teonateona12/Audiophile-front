@@ -9,6 +9,7 @@ import image5 from "../images/home/mobile/image-earphones-yx1.jpg";
 import image6 from "../images/shared/mobile/image-best-gear.jpg";
 import image7 from "../images/shared/tablet/image-best-gear.jpg";
 import image8 from "../images/shared/desktop/image-best-gear.jpg";
+import Footer from "./Footer";
 
 import Category from "./Category";
 import { useEffect, useState } from "react";
@@ -101,6 +102,7 @@ export default function ({ items }: any) {
           </Paragraph>
         </TextDiv>
       </LastDiv>
+      <Footer />
     </MainCont>
   );
 }

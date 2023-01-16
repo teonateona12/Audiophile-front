@@ -15,8 +15,9 @@ import {
   Title,
 } from "./Login";
 import { Link } from "react-router-dom";
+import { LogIn } from "./types";
 
-export default function Signup({ setisLoggedIn }: any) {
+export default function Signup({ setisLoggedIn }: LogIn) {
   const navigate = useNavigate();
 
   const {

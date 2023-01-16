@@ -3,11 +3,12 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { LogIn } from "./types";
 
 import { Link } from "react-router-dom";
 import { MainCont, Error } from "./Signup";
 
-export default function Login({ setisLoggedIn }: any) {
+export default function Login({ setisLoggedIn }: LogIn) {
   const [error, setError] = useState<string>("");
   const {
     register,
