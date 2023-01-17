@@ -6,24 +6,10 @@ import { useEffect } from "react";
 import { LogIn } from "./types";
 
 export default function Products({ setisLoggedIn }: LogIn) {
-  const [data, setData] = useState<any>([]);
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const response = await axios.get(
-          "https://audiophile-r04o.onrender.com/api/products"
-        );
-        setData(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProducts();
-  }, []);
   return (
     <div>
       <Navbar setisLoggedIn={setisLoggedIn} />
-      <Home items={data} />
+      <Home />
     </div>
   );
 }

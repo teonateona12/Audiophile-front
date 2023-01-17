@@ -45,6 +45,7 @@ export const TextSmall = styled.p`
   font-size: 13px;
   letter-spacing: 1px;
   opacity: 0.5;
+  color: black;
 `;
 export const IconDiv = styled.div`
   display: flex;

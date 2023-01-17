@@ -36,7 +36,7 @@ import {
   ImageDesk,
 } from "./Styles";
 
-export default function ({ items }: any) {
+export default function () {
   return (
     <MainCont>
       <Div>
