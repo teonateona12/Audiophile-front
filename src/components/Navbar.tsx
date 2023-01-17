@@ -1,9 +1,6 @@
-import { Link } from "react-router-dom";
-import navImg from "../images/nav.svg";
 import { useState } from "react";
-import logo from "../images/logo.png";
-import card from "../images/card.svg";
 import styled from "styled-components";
+
 const Navbar = ({ setisLoggedIn }: any) => {
   const [nav, setNav] = useState<any>(false);
 
@@ -13,10 +10,10 @@ const Navbar = ({ setisLoggedIn }: any) => {
         <ImgHeight
           style={{ transform: nav ? " rotate(90deg)" : "" }}
           onClick={() => setNav(!nav)}
-          src={navImg}
+          src="../assets/nav.svg"
         />
-        <ImgHeight src={logo} />
-        <Img src={card} />
+        <ImgHeight src="../assets/logo.png" />
+        <Img src="../assets/card.svg" />
       </Nav>
       <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
     </MainCont>

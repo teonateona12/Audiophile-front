@@ -1,4 +1,3 @@
-import react from "react";
 import styled from "styled-components";
 
 export const ImageDesk = styled.img`
@@ -152,6 +151,16 @@ export const TextP = styled.p`
     text-align: left;
   }
 `;
+export const Description = styled.p`
+  line-height: 25px;
+  text-align: center;
+  color: #000000;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  @media (min-width: 1440px) {
+    text-align: left;
+  }
+`;
 export const Name = styled.h1`
   text-align: center;
   font-size: 56px;
@@ -243,5 +252,21 @@ export const Button = styled.button`
   @media (min-width: 1440px) {
     margin: 0;
     width: 50%;
+  }
+`;
+export const CategoryName = styled.h1`
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+`;
+
+export const New = styled.p`
+  text-align: center;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: #d87d4a;
+  @media (min-width: 1440px) {
+    text-align: left;
   }
 `;

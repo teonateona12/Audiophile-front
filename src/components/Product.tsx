@@ -1,9 +1,9 @@
-import React from "react";
 import styled from "styled-components";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { useParams } from "react-router";
 import Category from "./Category";
+import { CategoryName, New, Description } from "./Styles";
 
 export default function Product({ data }: any) {
   const { id } = useParams();
@@ -41,24 +41,9 @@ const Cont = styled.div`
     margin-top: 15%;
   }
 `;
-const CategoryName = styled.h1`
-  text-align: center;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #ffffff;
-`;
 const CategoryDiv = styled.div`
   background-color: black;
   padding-bottom: 32px;
-`;
-const New = styled.p`
-  text-align: center;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-  color: #d87d4a;
-  @media (min-width: 1440px) {
-    text-align: left;
-  }
 `;
 const Button = styled.button`
   color: #ffffff;
@@ -75,16 +60,7 @@ const Button = styled.button`
     width: 50%;
   }
 `;
-const Description = styled.p`
-  line-height: 25px;
-  text-align: center;
-  color: #000000;
-  mix-blend-mode: normal;
-  opacity: 0.5;
-  @media (min-width: 1440px) {
-    text-align: left;
-  }
-`;
+
 const Name = styled.p`
   font-size: 28px;
   line-height: 38px;

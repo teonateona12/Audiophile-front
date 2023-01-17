@@ -1,20 +1,27 @@
-import React from "react";
 import styled from "styled-components";
-import logo from "../images/logo.png";
-import icons from "../images/icons.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <Container>
       <Cont>
         <div>
-          <Img src={logo} />
+          <Img src="../assets/logo.png" />
         </div>
         <Nav>
-          <NavText>HOME</NavText>
-          <NavText>HEADPHONES</NavText>
-          <NavText>SPEAKERS</NavText>
-          <NavText>EARPHONES</NavText>
+          <Link to="/products">
+            <NavText>HOME</NavText>
+          </Link>
+
+          <Link to="/products/headphones">
+            <NavText>HEADPHONES</NavText>
+          </Link>
+          <Link to="/products/speakers">
+            <NavText>SPEAKERS</NavText>
+          </Link>
+          <Link to="/products/earphones">
+            <NavText>EARPHONES</NavText>
+          </Link>
         </Nav>
       </Cont>
       <FooterText>
@@ -26,7 +33,7 @@ export default function Footer() {
       <Div>
         <FooterText>Copyright 2021. All Rights Reserved</FooterText>
         <div>
-          <Img src={icons} />
+          <Img src="../assets/icons.png" />
         </div>
       </Div>
     </Container>

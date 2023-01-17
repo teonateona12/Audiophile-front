@@ -1,18 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import image from "../images/home/mobile/image-header.jpg";
-import image1 from "../images/home/mobile/image-speaker-zx9.png";
-import image2 from "../images/home/mobile/image-speaker-zx7.jpg";
-import image3 from "../images/home/tablet/image-speaker-zx7.jpg";
-import image4 from "../images/home/desktop/image-speaker-zx7.jpg";
-import image5 from "../images/home/mobile/image-earphones-yx1.jpg";
-import image6 from "../images/shared/mobile/image-best-gear.jpg";
-import image7 from "../images/shared/tablet/image-best-gear.jpg";
-import image8 from "../images/shared/desktop/image-best-gear.jpg";
 import Footer from "./Footer";
-
 import Category from "./Category";
-import { useEffect, useState } from "react";
 import {
   MainCont,
   Container,
@@ -40,7 +28,7 @@ export default function () {
   return (
     <MainCont>
       <Div>
-        <Image src={image} />
+        <Image src="../assets/home/mobile/image-header.jpg" />
         <Container>
           <Text>NEW PRODUCT</Text>
           <TextH1>XX99 MARK II HEADPHONES</TextH1>
@@ -55,7 +43,7 @@ export default function () {
       <Category />
 
       <Orange>
-        <ImageOrange src={image1} />
+        <ImageOrange src="../assets/home/mobile/image-speaker-zx9.png" />
         <Cont>
           <Name>ZX9 SPEAKER</Name>
           <TextP>
@@ -67,9 +55,9 @@ export default function () {
       </Orange>
 
       <Grey>
-        <ImageGreyMob src={image2} />
-        <ImageGreyTab src={image3} />
-        <ImageGreyDesk src={image4} />
+        <ImageGreyMob src="../assets/home/mobile/image-speaker-zx7.jpg" />
+        <ImageGreyTab src="../assets/home/tablet/image-speaker-zx7.jpg" />
+        <ImageGreyDesk src="../assets/home/desktop/image-speaker-zx7.jpg" />
         <ContainerInside>
           <H4>ZX7 SPEAKER</H4>
           <SeeProduct2>SEE PRODUCT</SeeProduct2>
@@ -77,7 +65,7 @@ export default function () {
       </Grey>
 
       <DarkDiv>
-        <Img src={image5} />
+        <Img src="../assets/home/mobile/image-earphones-yx1.jpg" />
         <Container2>
           <H4>YX1 EARPHONES</H4>
           <SeeProduct2>SEE PRODUCT</SeeProduct2>
@@ -85,9 +73,9 @@ export default function () {
       </DarkDiv>
 
       <LastDiv>
-        <ImageGreyMob src={image6} />
-        <ImageGreyTab src={image7} />
-        <ImageDesk src={image8} />
+        <ImageGreyMob src="../assets/shared/mobile/image-best-gear.jpg" />
+        <ImageGreyTab src="../assets/shared/tablet/image-best-gear.jpg" />
+        <ImageDesk src="../assets/shared/desktop/image-best-gear.jpg" />
         <TextDiv>
           <Txt>
             BRINGING YOU THE <span>BEST</span> AUDIO GEAR

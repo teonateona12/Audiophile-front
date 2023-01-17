@@ -1,8 +1,8 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { LogIn } from "./types";
 
 import styled from "styled-components";
 import {
@@ -14,8 +14,6 @@ import {
   Container,
   Title,
 } from "./Login";
-import { Link } from "react-router-dom";
-import { LogIn } from "./types";
 
 export default function Signup({ setisLoggedIn }: LogIn) {
   const navigate = useNavigate();
