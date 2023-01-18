@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Footer from "./Footer";
 import Category from "./Category";
+import { Link } from "react-router-dom";
+
 import {
   MainCont,
   Container,
@@ -21,14 +23,13 @@ import {
   ContainerInside,
   H4,
   DarkDiv,
-  ImageDesk,
 } from "./Styles";
 
 export default function () {
   return (
     <MainCont>
       <Div>
-        <Image src="../assets/home/mobile/image-header.jpg" />
+        <Image src="https://audiophile-r04o.onrender.com/product/image-header.jpg" />
         <Container>
           <Text>NEW PRODUCT</Text>
           <TextH1>XX99 MARK II HEADPHONES</TextH1>
@@ -36,92 +37,55 @@ export default function () {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </TextH2>
-          <Button>SEE PRODUCT</Button>
+          <Link to="/products/headphones/xx99-mark-two-headphones">
+            <Button>SEE PRODUCT</Button>
+          </Link>
         </Container>
       </Div>
 
       <Category />
 
       <Orange>
-        <ImageOrange src="../assets/home/mobile/image-speaker-zx9.png" />
+        <ImageOrange src="https://audiophile-r04o.onrender.com/product/image-speaker-zx9.png" />
         <Cont>
           <Name>ZX9 SPEAKER</Name>
           <TextP>
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </TextP>
-          <SeeProduct>SEE PRODUCT</SeeProduct>
+          <Link to="/products/speakers/zx9-speaker">
+            <SeeProduct>SEE PRODUCT</SeeProduct>
+          </Link>
         </Cont>
       </Orange>
 
       <Grey>
-        <ImageGreyMob src="../assets/home/mobile/image-speaker-zx7.jpg" />
-        <ImageGreyTab src="../assets/home/tablet/image-speaker-zx7.jpg" />
-        <ImageGreyDesk src="../assets/home/desktop/image-speaker-zx7.jpg" />
+        <ImageGreyMob src="https://audiophile-r04o.onrender.com/product/mob-image-speaker-zx7.jpg" />
+        <ImageGreyTab src="https://audiophile-r04o.onrender.com/product/tab-image-speaker-zx7.jpg" />
+        <ImageGreyDesk src="https://audiophile-r04o.onrender.com/product/dec-image-speaker-zx7.jpg" />
         <ContainerInside>
           <H4>ZX7 SPEAKER</H4>
-          <SeeProduct2>SEE PRODUCT</SeeProduct2>
+          <Link to="/products/speakers/zx7-speaker">
+            <SeeProduct2>SEE PRODUCT</SeeProduct2>
+          </Link>
         </ContainerInside>
       </Grey>
 
       <DarkDiv>
-        <Img src="../assets/home/mobile/image-earphones-yx1.jpg" />
+        <Img src="https://audiophile-r04o.onrender.com/product/image-earphones-yx1.jpg" />
         <Container2>
           <H4>YX1 EARPHONES</H4>
-          <SeeProduct2>SEE PRODUCT</SeeProduct2>
+          <Link to="/products/earphones/yx1-earphones">
+            <SeeProduct2>SEE PRODUCT</SeeProduct2>
+          </Link>
         </Container2>
       </DarkDiv>
 
-      <LastDiv>
-        <ImageGreyMob src="../assets/shared/mobile/image-best-gear.jpg" />
-        <ImageGreyTab src="../assets/shared/tablet/image-best-gear.jpg" />
-        <ImageDesk src="../assets/shared/desktop/image-best-gear.jpg" />
-        <TextDiv>
-          <Txt>
-            BRINGING YOU THE <span>BEST</span> AUDIO GEAR
-          </Txt>
-          <Paragraph>
-            Located at the heart of New York City, Audiophile is the premier
-            store for high end headphones, earphones, speakers, and audio
-            accessories. We have a large showroom and luxury demonstration rooms
-            available for you to browse and experience a wide range of our
-            products. Stop by our store to meet some of the fantastic people who
-            make Audiophile the best place to buy your portable audio equipment.
-          </Paragraph>
-        </TextDiv>
-      </LastDiv>
       <Footer />
     </MainCont>
   );
 }
-const TextDiv = styled.div`
-  @media (min-width: 1440px) {
-    margin-top: 5%;
-  }
-`;
-const Paragraph = styled.p`
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 25px;
-  text-align: center;
-  color: #000000;
-  opacity: 0.5;
-  @media (min-width: 1440px) {
-    text-align: left;
-  }
-`;
-const Txt = styled.h2`
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 38px;
-  text-align: center;
-  letter-spacing: 1px;
-  color: #000000;
-  margin: 30px 0;
-  @media (min-width: 1440px) {
-    text-align: left;
-  }
-`;
+
 export const LastDiv = styled.div`
   margin: 24px;
   margin-top: 15%;

@@ -4,10 +4,16 @@ import Navbar from "./Navbar";
 import { useParams } from "react-router";
 import Category from "./Category";
 import { CategoryName, New, Description } from "./Styles";
+import { Link } from "react-router-dom";
+import { PropsType, ProductType } from "./types";
 
-export default function Product({ data }: any) {
+const Product: React.FC<PropsType> = ({ data }) => {
+  console.log(data);
+
   const { id } = useParams();
-  const product = data.filter((product: any) => id === product.category);
+  const product = data.filter(
+    (product: ProductType) => id === product.category
+  );
 
   return (
     <div>
@@ -18,12 +24,16 @@ export default function Product({ data }: any) {
         </CategoryDiv>
         {product.map((product: any) => (
           <Div>
-            <Image src={`${product.image.mobile}`} />
+            <Image
+              src={`https://audiophile-r04o.onrender.com/product/${product.image.mobile}`}
+            />
             <Cont>
               {product.new && <New>NEW PRODUCT</New>}
               <Name>{product.name}</Name>
               <Description>{product.description}</Description>
-              <Button>SEE PRODUCT</Button>
+              <Link to={`/products/${product.category}/${product.slug}`}>
+                <Button>SEE PRODUCT</Button>
+              </Link>
             </Cont>
           </Div>
         ))}
@@ -32,7 +42,8 @@ export default function Product({ data }: any) {
       <Footer />
     </div>
   );
-}
+};
+export default Product;
 const Cont = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,6 +62,8 @@ const Button = styled.button`
   background: #d87d4a;
   padding: 15px 30px;
   width: 50%;
+  display: flex;
+  justify-content: center;
   margin: auto;
   @media (min-width: 768px) {
     width: 25%;

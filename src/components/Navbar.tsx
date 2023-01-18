@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const Navbar = ({ setisLoggedIn }: any) => {
-  const [nav, setNav] = useState<any>(false);
+  const [nav, setNav] = useState<Boolean>(false);
 
   return (
     <MainCont>
@@ -10,10 +10,10 @@ const Navbar = ({ setisLoggedIn }: any) => {
         <ImgHeight
           style={{ transform: nav ? " rotate(90deg)" : "" }}
           onClick={() => setNav(!nav)}
-          src="../assets/nav.svg"
+          src="https://audiophile-r04o.onrender.com/product/nav.svg"
         />
-        <ImgHeight src="../assets/logo.png" />
-        <Img src="../assets/card.svg" />
+        <ImgHeight src="https://audiophile-r04o.onrender.com/product/logo.png" />
+        <Img src="https://audiophile-r04o.onrender.com/product/card.svg" />
       </Nav>
       <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
     </MainCont>

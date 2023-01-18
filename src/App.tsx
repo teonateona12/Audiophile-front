@@ -6,10 +6,15 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Product from "./components/Product";
 import axios from "axios";
+import Detail from "./components/Detail";
+import { useParams } from "react-router-dom";
+import { ProductType } from "./components/types";
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState<any>(true);
-  const [data, setData] = useState<any>([]);
+  const [isLoggedIn, setisLoggedIn] = useState<Boolean>(true);
+  const [data, setData] = useState<ProductType[]>([]);
+  const { id } = useParams();
+
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -40,6 +45,7 @@ function App() {
           path="/signup"
           element={<Signup setisLoggedIn={setisLoggedIn} />}
         />
+        <Route path="/products/:id/:detail" element={<Detail data={data} />} />
         <Route path="/" element={<Login setisLoggedIn={setisLoggedIn} />} />
       </Routes>
     </div>
