@@ -5,11 +5,9 @@ import { useParams } from "react-router";
 import Category from "./Category";
 import { CategoryName, New, Description } from "./Styles";
 import { Link } from "react-router-dom";
-import { PropsType, ProductType } from "./types";
+import { PropsType, ProductType, ProductProps } from "./types";
 
-const Product: React.FC<PropsType> = ({ data }) => {
-  console.log(data);
-
+const Product: React.FC<ProductProps> = ({ data, setisLoggedIn }) => {
   const { id } = useParams();
   const product = data.filter(
     (product: ProductType) => id === product.category
@@ -17,12 +15,12 @@ const Product: React.FC<PropsType> = ({ data }) => {
 
   return (
     <div>
-      <Navbar />
       <div>
+        <Navbar setisLoggedIn={setisLoggedIn} />
         <CategoryDiv>
           <CategoryName>{product[0]?.category}</CategoryName>
         </CategoryDiv>
-        {product.map((product: any) => (
+        {product.map((product: ProductType) => (
           <Div>
             <Image
               src={`https://audiophile-r04o.onrender.com/product/${product.image.mobile}`}

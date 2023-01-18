@@ -9,7 +9,6 @@ export default function Category() {
         <Text>HEADPHONES</Text>
         <IconDiv>
           <Link to="/products/headphones">
-            {" "}
             <TextSmall>SHOP</TextSmall>
           </Link>
           <img src="https://audiophile-r04o.onrender.com/product/icon.svg" />

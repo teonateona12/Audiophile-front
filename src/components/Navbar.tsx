@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { LogIn } from "./types";
 
-const Navbar = ({ setisLoggedIn }: any) => {
+const Navbar = ({ setisLoggedIn }: LogIn) => {
   const [nav, setNav] = useState<Boolean>(false);
 
   return (

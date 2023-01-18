@@ -2,16 +2,17 @@ import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import AlsoLike from "./AlsoLike";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import { ProductType, PropsType } from "./types";
+import { IncludesProps, ProductProps, ProductType } from "./types";
 
-const Detail: React.FC<PropsType> = ({ data }) => {
+const Detail: React.FC<ProductProps> = ({ data, setisLoggedIn }) => {
   const { detail } = useParams();
   const result = data.find((item: ProductType) => item.slug === detail);
   return (
     <div>
-      <Navbar />
+      <Navbar setisLoggedIn={setisLoggedIn} />
       <ProductCont>
         <Link to={`/products/${result?.category}`}>
           <Button>Go Back</Button>
@@ -47,7 +48,7 @@ const Detail: React.FC<PropsType> = ({ data }) => {
             <BoxDiv>
               <h3>IN THE BOX</h3>
               <div>
-                {result?.includes.map((item: any) => (
+                {result?.includes.map((item: IncludesProps) => (
                   <InTheBox>
                     <Number>{item.quantity + "x"}</Number>
                     <Item>{item.item}</Item>
@@ -70,6 +71,7 @@ const Detail: React.FC<PropsType> = ({ data }) => {
             src={`https://audiophile-r04o.onrender.com/product/${result?.gallery.third.mobile}`}
           />
         </GalleryDiv>
+        <AlsoLike data={data} />
       </ProductCont>
       <Footer />
     </div>

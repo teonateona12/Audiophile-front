@@ -6,7 +6,10 @@ export interface Data {
 export interface LogIn {
   setisLoggedIn: (n: boolean) => void;
 }
-
+export interface ProductProps {
+  data: ProductType[];
+  setisLoggedIn: (n: boolean) => void;
+}
 export interface ProductType {
   id: number;
   _id: string;
@@ -39,10 +42,20 @@ type Obj = {
   item: string;
   _id: string;
 };
-export interface Imag {
+interface Imag {
   mobile: string;
 }
 
 export type PropsType = {
   data: ProductType[];
 };
+export interface AlsoProps {
+  slug: string;
+  image: Imag;
+  name: string;
+}
+
+export interface IncludesProps {
+  quantity: number;
+  item: string;
+}

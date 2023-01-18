@@ -5,8 +5,7 @@ import { LogIn } from "./types";
 export default function Products({ setisLoggedIn }: LogIn) {
   return (
     <div>
-      <Navbar setisLoggedIn={setisLoggedIn} />
-      <Home />
+      <Home setisLoggedIn={setisLoggedIn} />
     </div>
   );
 }

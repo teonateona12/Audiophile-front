@@ -24,8 +24,9 @@ import {
   H4,
   DarkDiv,
 } from "./Styles";
+import Navbar from "./Navbar";
 
-export default function () {
+export default function Home({ setisLoggedIn }: any) {
   return (
     <MainCont>
       <Div>

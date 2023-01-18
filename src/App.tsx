@@ -9,6 +9,7 @@ import axios from "axios";
 import Detail from "./components/Detail";
 import { useParams } from "react-router-dom";
 import { ProductType } from "./components/types";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState<Boolean>(true);
@@ -36,16 +37,24 @@ function App() {
           path="/products"
           element={
             <Protected isLoggedIn={isLoggedIn}>
+              <Navbar setisLoggedIn={setisLoggedIn} />
               <Products setisLoggedIn={setisLoggedIn} />
             </Protected>
           }
         />
-        <Route path="/products/:id" element={<Product data={data} />} />
+
+        <Route
+          path="/products/:id"
+          element={<Product data={data} setisLoggedIn={setisLoggedIn} />}
+        />
         <Route
           path="/signup"
           element={<Signup setisLoggedIn={setisLoggedIn} />}
         />
-        <Route path="/products/:id/:detail" element={<Detail data={data} />} />
+        <Route
+          path="/products/:id/:detail"
+          element={<Detail data={data} setisLoggedIn={setisLoggedIn} />}
+        />
         <Route path="/" element={<Login setisLoggedIn={setisLoggedIn} />} />
       </Routes>
     </div>
