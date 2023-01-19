@@ -19,7 +19,6 @@ export default function Category() {
         <Text>SPEAKERS</Text>
         <IconDiv>
           <Link to="/products/speakers">
-            {" "}
             <TextSmall>SHOP</TextSmall>
           </Link>
           <img src="https://audiophile-r04o.onrender.com/product/icon.svg" />
