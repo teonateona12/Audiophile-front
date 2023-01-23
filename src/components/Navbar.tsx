@@ -2,38 +2,42 @@ import { useState } from "react";
 import styled from "styled-components";
 import { LogIn } from "./types";
 import { Link } from "react-router-dom";
+import Cart from "./Cart";
 
-const Navbar = ({ setisLoggedIn }: LogIn) => {
+const Navbar = ({ setisLoggedIn, cart, setCart, number, setNumber }: any) => {
   const [nav, setNav] = useState<Boolean>(false);
-
+  const cartButton = () => {
+    setNav(!nav);
+  };
   return (
-    <MainCont>
-      <Nav>
-        {/* <ImgHeight
-          style={{ transform: nav ? " rotate(90deg)" : "" }}
-          onClick={() => setNav(!nav)}
-          src="https://audiophile-r04o.onrender.com/product/nav.svg"
-        /> */}
-        <ImgHeight src="https://audiophile-r04o.onrender.com/product/logo.png" />
-        <NavLink>
-          <Link to="/products">
-            <NavText>HOME</NavText>
-          </Link>
+    <div>
+      <MainCont>
+        <Nav>
+          <ImgHeight src="https://audiophile-r04o.onrender.com/product/logo.png" />
+          <NavLink>
+            <Link to="/products">
+              <NavText>HOME</NavText>
+            </Link>
 
-          <Link to="/products/headphones">
-            <NavText>HEADPHONES</NavText>
-          </Link>
-          <Link to="/products/speakers">
-            <NavText>SPEAKERS</NavText>
-          </Link>
-          <Link to="/products/earphones">
-            <NavText>EARPHONES</NavText>
-          </Link>
-        </NavLink>
-        <Img src="https://audiophile-r04o.onrender.com/product/card.svg" />
-      </Nav>
-      <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
-    </MainCont>
+            <Link to="/products/headphones">
+              <NavText>HEADPHONES</NavText>
+            </Link>
+            <Link to="/products/speakers">
+              <NavText>SPEAKERS</NavText>
+            </Link>
+            <Link to="/products/earphones">
+              <NavText>EARPHONES</NavText>
+            </Link>
+          </NavLink>
+          <Img
+            onClick={() => cartButton()}
+            src="https://audiophile-r04o.onrender.com/product/card.svg"
+          />
+        </Nav>
+        <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
+      </MainCont>
+      {nav && <Cart number={number} setNumber={setNumber} />}
+    </div>
   );
 };
 export default Navbar;

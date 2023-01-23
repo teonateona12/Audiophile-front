@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
 import { useParams } from "react-router";
 import Category from "./Category";
 import { CategoryName, New, Description } from "./Styles";
@@ -16,7 +14,6 @@ const Product: React.FC<ProductProps> = ({ data, setisLoggedIn }) => {
   return (
     <div>
       <div>
-        <Navbar setisLoggedIn={setisLoggedIn} />
         <CategoryDiv>
           <CategoryName>{product[0]?.category}</CategoryName>
         </CategoryDiv>
@@ -37,7 +34,6 @@ const Product: React.FC<ProductProps> = ({ data, setisLoggedIn }) => {
         ))}
       </div>
       <Category />
-      <Footer />
     </div>
   );
 };

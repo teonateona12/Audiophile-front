@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import Footer from "./Footer";
 import Category from "./Category";
 import { Link } from "react-router-dom";
-
+import Cart from "./Cart";
 import {
   MainCont,
   Container,
@@ -24,9 +23,8 @@ import {
   H4,
   DarkDiv,
 } from "./Styles";
-import Navbar from "./Navbar";
 
-export default function Home({ setisLoggedIn }: any) {
+export default function Home({ setisLoggedIn, cart }: any) {
   return (
     <MainCont>
       <Div>
@@ -81,8 +79,6 @@ export default function Home({ setisLoggedIn }: any) {
           </Link>
         </Container2>
       </DarkDiv>
-
-      <Footer />
     </MainCont>
   );
 }

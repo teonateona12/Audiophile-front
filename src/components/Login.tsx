@@ -27,6 +27,7 @@ export default function Login({ setisLoggedIn }: LogIn) {
           password,
         }
       );
+      console.log(res.data.token);
       setisLoggedIn(true);
       navigate("/products");
     } catch (error) {
