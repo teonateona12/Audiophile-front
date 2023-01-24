@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { LogIn } from "./types";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
+import { LogIn } from "./types";
 
-const Navbar = ({ setisLoggedIn, cart, setCart, number, setNumber }: any) => {
+const Navbar = ({ setisLoggedIn }: LogIn) => {
   const [nav, setNav] = useState<Boolean>(false);
   const cartButton = () => {
     setNav(!nav);
@@ -36,7 +36,7 @@ const Navbar = ({ setisLoggedIn, cart, setCart, number, setNumber }: any) => {
         </Nav>
         <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
       </MainCont>
-      {nav && <Cart number={number} setNumber={setNumber} />}
+      {nav && <Cart />}
     </div>
   );
 };

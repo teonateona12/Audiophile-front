@@ -3,9 +3,9 @@ import { useParams } from "react-router";
 import Category from "./Category";
 import { CategoryName, New, Description } from "./Styles";
 import { Link } from "react-router-dom";
-import { PropsType, ProductType, ProductProps } from "./types";
+import { PropsType, ProductType } from "./types";
 
-const Product: React.FC<ProductProps> = ({ data, setisLoggedIn }) => {
+const Product: React.FC<PropsType> = ({ data }) => {
   const { id } = useParams();
   const product = data.filter(
     (product: ProductType) => id === product.category

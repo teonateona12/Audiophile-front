@@ -8,7 +8,7 @@ export interface LogIn {
 }
 export interface ProductProps {
   data: ProductType[];
-  setisLoggedIn: (n: boolean) => void;
+  // setisLoggedIn: (n: boolean) => void;
 }
 export interface ProductType {
   id: number;
@@ -58,4 +58,10 @@ export interface AlsoProps {
 export interface IncludesProps {
   quantity: number;
   item: string;
+}
+
+export interface DetailProps {
+  data: ProductType[];
+  number: number;
+  setNumber: (n: number) => void;
 }

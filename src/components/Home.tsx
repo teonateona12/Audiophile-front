@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import Category from "./Category";
 import { Link } from "react-router-dom";
-import Cart from "./Cart";
+import { useEffect } from "react";
+import { getCookie } from "react-use-cookie";
+import axios from "axios";
 import {
   MainCont,
   Container,
@@ -24,7 +26,23 @@ import {
   DarkDiv,
 } from "./Styles";
 
-export default function Home({ setisLoggedIn, cart }: any) {
+export default function Home() {
+  useEffect(() => {
+    const getToken = async () => {
+      const token = getCookie("token");
+      try {
+        const response = await axios.get("http://localhost:5000/api/auth/me", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getToken();
+  }, []);
+
   return (
     <MainCont>
       <Div>

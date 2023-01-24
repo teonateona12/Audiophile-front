@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { LogIn } from "./types";
-
 import styled from "styled-components";
 import {
   Button,
@@ -33,11 +32,10 @@ export default function Signup({ setisLoggedIn }: LogIn) {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/signup",
+        "https://audiophile-r04o.onrender.com/api/signup",
         formData
       );
-      setisLoggedIn(true);
-      navigate("/products");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

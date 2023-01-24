@@ -46,14 +46,8 @@ function App() {
           path="/products"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar
-                setisLoggedIn={setisLoggedIn}
-                cart={cart}
-                setCart={setCart}
-                number={number}
-                setNumber={setNumber}
-              />
-              <Home setisLoggedIn={setisLoggedIn} />
+              <Navbar setisLoggedIn={setisLoggedIn} />
+              <Home />
               <Footer />
             </Protected>
           }
@@ -62,14 +56,8 @@ function App() {
           path="/products/:id"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar
-                setisLoggedIn={setisLoggedIn}
-                cart={cart}
-                setCart={setCart}
-                number={number}
-                setNumber={setNumber}
-              />
-              <Product data={data} setisLoggedIn={setisLoggedIn} />
+              <Navbar setisLoggedIn={setisLoggedIn} />
+              <Product data={data} />
               <Footer />
             </Protected>
           }
@@ -78,21 +66,8 @@ function App() {
           path="/products/:id/:detail"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar
-                setisLoggedIn={setisLoggedIn}
-                cart={cart}
-                setCart={setCart}
-                number={number}
-                setNumber={setNumber}
-              />
-              <Detail
-                data={data}
-                setisLoggedIn={setisLoggedIn}
-                cart={cart}
-                setCart={setCart}
-                number={number}
-                setNumber={setNumber}
-              />
+              <Navbar setisLoggedIn={setisLoggedIn} />
+              <Detail data={data} number={number} setNumber={setNumber} />
               <Footer />
             </Protected>
           }
@@ -101,13 +76,7 @@ function App() {
           path="/checkout"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar
-                setisLoggedIn={setisLoggedIn}
-                cart={cart}
-                setCart={setCart}
-                number={number}
-                setNumber={setNumber}
-              />
+              <Navbar setisLoggedIn={setisLoggedIn} />
               <Checkout />
               <Footer />
             </Protected>

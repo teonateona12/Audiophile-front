@@ -5,41 +5,73 @@ export default function Checkout() {
   return (
     <MainCont>
       <Text>CHECKOUT</Text>
+
       <OrangeTxt>Billing details</OrangeTxt>
+
       <Form>
         <Div1>
-          <div>
+          <Div>
             <Label>Name</Label>
             <Input placeholder="Alexei Ward"></Input>
-          </div>
-          <div>
+          </Div>
+          <Div>
             <Label>Email Adress</Label>
             <Input placeholder="alexei@mail.com"></Input>
-          </div>
-          <div>
+          </Div>
+          <Div>
             <Label>Phone Number</Label>
             <Input placeholder="+1 202-555-0136"></Input>
-          </div>
+          </Div>
         </Div1>
+
         <OrangeTxt>shipping info</OrangeTxt>
-        <Label>Your Address</Label>
-        <Input placeholder="1137 Williams Avenue"></Input>
-        <Label>ZIP Code</Label>
-        <Input placeholder="10001"></Input>
-        <Label>City</Label>
-        <Input placeholder="New York"></Input>
-        <Label>Country</Label>
-        <Input placeholder="United States"></Input>
+
+        <Div1>
+          <DivAddress>
+            <Label>Your Address</Label>
+            <Input placeholder="1137 Williams Avenue"></Input>
+          </DivAddress>
+          <Div>
+            <Label>ZIP Code</Label>
+            <Input placeholder="10001"></Input>
+          </Div>
+          <Div>
+            <Label>City</Label>
+            <Input placeholder="New York"></Input>
+          </Div>
+          <Div>
+            <Label>Country</Label>
+            <Input placeholder="United States"></Input>
+          </Div>
+        </Div1>
       </Form>
     </MainCont>
   );
 }
+const DivAddress = styled.div`
+  width: 90%;
+  margin-top: 5%;
+`;
+const Div = styled.div`
+  width: 90%;
+  margin-top: 5%;
+  @media (min-width: 768px) {
+    width: 45%;
+  }
+  @media (min-width: 1440px) {
+  }
+`;
 const Div1 = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media (min-width: 768px) {
+    justify-content: space-between;
+  }
+  @media (min-width: 1440px) {
+  }
 `;
 const Label = styled.label`
-  margin-top: 10px;
+  margin-top: 20px;
   letter-spacing: -0.214286px;
   font-weight: 700;
   color: #000000;
@@ -56,7 +88,7 @@ const Input = styled.input`
   border-radius: 8px;
   padding: 18px 0 18px 24px;
   @media (min-width: 768px) {
-    width: 40%;
+    // width: 40%;
   }
   @media (min-width: 1440px) {
   }
@@ -68,6 +100,7 @@ const OrangeTxt = styled.h4`
   letter-spacing: 0.928571px;
   text-transform: uppercase;
   color: #d87d4a;
+  margin-top: 32px;
 `;
 const MainCont = styled.div`
   padding: 24px;
@@ -88,5 +121,4 @@ const Text = styled.h1`
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: 32px;
 `;

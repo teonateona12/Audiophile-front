@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { LogIn, ProductType } from "./types";
-
+import { LogIn } from "./types";
+import { setCookie } from "react-use-cookie";
 import { Link } from "react-router-dom";
 import { MainCont, Error } from "./Signup";
 
@@ -27,7 +27,9 @@ export default function Login({ setisLoggedIn }: LogIn) {
           password,
         }
       );
-      console.log(res.data.token);
+      setCookie("token", res.data.token, {
+        days: 1,
+      });
       setisLoggedIn(true);
       navigate("/products");
     } catch (error) {
@@ -35,6 +37,7 @@ export default function Login({ setisLoggedIn }: LogIn) {
       console.log(error);
     }
   };
+
   return (
     <div>
       <MainCont>

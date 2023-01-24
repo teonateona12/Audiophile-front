@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function Cart({ number, setNumber }: any) {
+export default function Cart() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     const getCartList = async () => {
