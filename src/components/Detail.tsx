@@ -6,102 +6,100 @@ import AlsoLike from "./AlsoLike";
 import axios from "axios";
 import { DetailProps, IncludesProps, ProductType } from "./types";
 
-const Detail =
-  // : React.FC<DetailProps>
-  ({ data, number, setNumber, user }: any) => {
-    const { detail } = useParams();
-    const result = data.find((item: ProductType) => item.slug === detail);
-    console.log(user);
-    const cartButton = async () => {
-      const res = await axios.post("http://localhost:5000/api/cart", {
-        name: result?.name,
-        number,
-        price: result?.price,
-        image: result?.image.mobile,
-        userId: user.id,
-      });
-    };
-
-    const increase = () => {
-      if (number > 1) {
-        setNumber(number - 1);
-      } else {
-        return;
-      }
-    };
-    const decrease = () => {
-      if (number <= 3) {
-        setNumber(number + 1);
-      } else {
-        return;
-      }
-    };
-    return (
-      <div>
-        <ProductCont>
-          <Link to={`/products/${result?.category}`}>
-            <Button>Go Back</Button>
-          </Link>
-          <div>
-            <ImgName>
-              <div>
-                <Image
-                  src={`https://audiophile-r04o.onrender.com/product/${result?.image.mobile}`}
-                />
-              </div>
-              <NameCont>
-                <Name>{result?.name}</Name>
-                <Desc>{result?.description}</Desc>
-                <Price>{"$ " + result?.price}</Price>
-                <CartDiv>
-                  <Cart>
-                    <Btn onClick={() => increase()}>-</Btn>
-                    <p>{number}</p>
-                    <Btn onClick={() => decrease()}>+</Btn>
-                  </Cart>
-                  <AddButton onClick={cartButton}>ADD TO CART</AddButton>
-                </CartDiv>
-              </NameCont>
-            </ImgName>
-          </div>
-          <FeatureDiv>
-            <Cont>
-              <h3>FEATURES</h3>
-              <Features>{result?.features}</Features>
-            </Cont>
-            <div>
-              <BoxDiv>
-                <h3>IN THE BOX</h3>
-                <div>
-                  {result?.includes.map((item: IncludesProps) => (
-                    <InTheBox>
-                      <Number>{item.quantity + "x"}</Number>
-                      <Item>{item.item}</Item>
-                    </InTheBox>
-                  ))}
-                </div>
-              </BoxDiv>
-            </div>
-          </FeatureDiv>
-          <GalleryDiv>
-            <TwoImg>
-              <Image
-                src={`https://audiophile-r04o.onrender.com/product/${result?.gallery.first.mobile}`}
-              />
-              <Image
-                src={`https://audiophile-r04o.onrender.com/product/${result?.gallery.second.mobile}`}
-              />
-            </TwoImg>
-            <Image
-              src={`https://audiophile-r04o.onrender.com/product/${result?.gallery.third.mobile}`}
-            />
-          </GalleryDiv>
-          <AlsoLike data={data} />
-        </ProductCont>
-      </div>
-    );
+const Detail: React.FC<DetailProps> = ({ data, number, setNumber, user }) => {
+  const { detail } = useParams();
+  const result = data.find((item: ProductType) => item.slug === detail);
+  const cartButton = async () => {
+    const res = await axios.post("http://localhost:5000/api/cart", {
+      name: result?.name,
+      number,
+      price: result?.price,
+      image: result?.image.mobile,
+      userId: user?.id,
+    });
   };
+
+  const increase = () => {
+    if (number > 1) {
+      setNumber(number - 1);
+    } else {
+      return;
+    }
+  };
+  const decrease = () => {
+    if (number <= 3) {
+      setNumber(number + 1);
+    } else {
+      return;
+    }
+  };
+  return (
+    <div>
+      <ProductCont>
+        <Link to={`/products/${result?.category}`}>
+          <Button>Go Back</Button>
+        </Link>
+        <div>
+          <ImgName>
+            <div>
+              <Image
+                src={`https://audiophile-r04o.onrender.com/product/${result?.image.mobile}`}
+              />
+            </div>
+            <NameCont>
+              <Name>{result?.name}</Name>
+              <Desc>{result?.description}</Desc>
+              <Price>{"$ " + result?.price}</Price>
+              <CartDiv>
+                <Cart>
+                  <Btn onClick={() => increase()}>-</Btn>
+                  <p>{number}</p>
+                  <Btn onClick={() => decrease()}>+</Btn>
+                </Cart>
+                <AddButton onClick={cartButton}>ADD TO CART</AddButton>
+              </CartDiv>
+            </NameCont>
+          </ImgName>
+        </div>
+        <FeatureDiv>
+          <Cont>
+            <h3>FEATURES</h3>
+            <Features>{result?.features}</Features>
+          </Cont>
+          <div>
+            <BoxDiv>
+              <h3>IN THE BOX</h3>
+              <div>
+                {result?.includes.map((item: IncludesProps) => (
+                  <InTheBox>
+                    <Number>{item.quantity + "x"}</Number>
+                    <Item>{item.item}</Item>
+                  </InTheBox>
+                ))}
+              </div>
+            </BoxDiv>
+          </div>
+        </FeatureDiv>
+        <GalleryDiv>
+          <TwoImg>
+            <Image
+              src={`https://audiophile-r04o.onrender.com/product/${result?.gallery.first.mobile}`}
+            />
+            <Image
+              src={`https://audiophile-r04o.onrender.com/product/${result?.gallery.second.mobile}`}
+            />
+          </TwoImg>
+          <Image
+            src={`https://audiophile-r04o.onrender.com/product/${result?.gallery.third.mobile}`}
+          />
+        </GalleryDiv>
+        <AlsoLike data={data} />
+      </ProductCont>
+    </div>
+  );
+};
 export default Detail;
+
 const Cont = styled.div`
   display: flex;
   flex-direction: column;
@@ -147,7 +145,6 @@ const ImgName = styled.div`
 const Btn = styled.button`
   border: none;
   color: #000000;
-  opacity: 0.25;
 `;
 const AddButton = styled.button`
   font-weight: 700;
@@ -185,8 +182,6 @@ const Button = styled.button`
   color: #000000;
   font-weight: 500;
   font-size: 15px;
-  mix-blend-mode: normal;
-  opacity: 0.5;
   border: none;
   background-color: none;
   margin: 20px 0;
@@ -222,11 +217,14 @@ const NameCont = styled.div`
 `;
 const ProductCont = styled.div`
   margin: 24px;
+  margin-top: 20%;
   @media (min-width: 768px) {
     margin: 40px;
+    margin-top: 20%;
   }
   @media (min-width: 1440px) {
     margin: 5% 12%;
+    margin-top: 10%;
   }
 `;
 const Number = styled.p`
@@ -240,24 +238,18 @@ const Item = styled.p`
   font-size: 15px;
   line-height: 25px;
   color: #000000;
-  mix-blend-mode: normal;
-  opacity: 0.5;
 `;
 const Features = styled.p`
   font-weight: 500;
   font-size: 15px;
   line-height: 25px;
   color: #000000;
-  mix-blend-mode: normal;
-  opacity: 0.5;
 `;
 const Desc = styled.p`
   font-weight: 500;
   font-size: 15px;
   line-height: 25px;
   color: #000000;
-  mix-blend-mode: normal;
-  opacity: 0.5;
 `;
 const Name = styled.p`
   font-weight: 700;

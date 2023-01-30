@@ -8,20 +8,22 @@ import Product from "./components/Product";
 import axios from "axios";
 import Detail from "./components/Detail";
 import { useParams } from "react-router-dom";
-import { ProductType } from "./components/types";
+import { Cart, ProductType, User } from "./components/types";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Checkout from "./components/Checkout";
 import { getCookie } from "react-use-cookie";
+import ThankYou from "./components/ThankYou";
+import Verify from "./components/Verify";
 
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState<Boolean>(true);
   const [data, setData] = useState<ProductType[]>([]);
-  const [cart, setCart] = useState([]);
-  const [user, setUser] = useState<any>();
+  const [cart, setCart] = useState<Cart[]>([]);
+  const [user, setUser] = useState<User>();
   const [number, setNumber] = useState<number>(1);
   const { id } = useParams();
-
+  console.log(user);
   useEffect(() => {
     const getProducts = async () => {
       const token = getCookie("token");
@@ -38,11 +40,11 @@ function App() {
     };
     getProducts();
   }, []);
-
   return (
     <div>
       <Routes>
         <Route path="/" element={<Login setisLoggedIn={setisLoggedIn} />} />
+        <Route path="/verify" element={<Verify />} />
         <Route
           path="/signup"
           element={<Signup setisLoggedIn={setisLoggedIn} />}
@@ -51,7 +53,12 @@ function App() {
           path="/products"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar setisLoggedIn={setisLoggedIn} user={user} />
+              <Navbar
+                setisLoggedIn={setisLoggedIn}
+                user={user}
+                cart={cart}
+                setCart={setCart}
+              />
               <Home setUser={setUser} />
               <Footer />
             </Protected>
@@ -61,7 +68,12 @@ function App() {
           path="/products/:id"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar setisLoggedIn={setisLoggedIn} user={user} />
+              <Navbar
+                setisLoggedIn={setisLoggedIn}
+                user={user}
+                cart={cart}
+                setCart={setCart}
+              />
               <Product data={data} />
               <Footer />
             </Protected>
@@ -71,7 +83,12 @@ function App() {
           path="/products/:id/:detail"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar setisLoggedIn={setisLoggedIn} user={user} />
+              <Navbar
+                setisLoggedIn={setisLoggedIn}
+                user={user}
+                cart={cart}
+                setCart={setCart}
+              />
               <Detail
                 data={data}
                 number={number}
@@ -86,8 +103,29 @@ function App() {
           path="/checkout"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar setisLoggedIn={setisLoggedIn} user={user} />
-              <Checkout />
+              <Navbar
+                setisLoggedIn={setisLoggedIn}
+                user={user}
+                cart={cart}
+                setCart={setCart}
+              />
+              <Checkout cart={cart} user={user} />
+              <Footer />
+            </Protected>
+          }
+        />
+
+        <Route
+          path="/thankyou"
+          element={
+            <Protected isLoggedIn={isLoggedIn}>
+              <Navbar
+                setisLoggedIn={setisLoggedIn}
+                user={user}
+                cart={cart}
+                setCart={setCart}
+              />
+              <ThankYou />
               <Footer />
             </Protected>
           }

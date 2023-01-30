@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { LogIn } from "./types";
 import styled from "styled-components";
+
 import {
   Button,
   Input,
@@ -29,13 +30,14 @@ export default function Signup({ setisLoggedIn }: LogIn) {
     formData.append("email", data.email);
     formData.append("name", data.name);
     formData.append("password", data.password);
+    formData.append("backLink", "http://localhost:3000/verify");
 
     try {
       const res = await axios.post(
         "http://localhost:5000/api/signup",
         formData
       );
-      navigate("/");
+      navigate("/verify");
     } catch (error) {
       console.log(error);
     }

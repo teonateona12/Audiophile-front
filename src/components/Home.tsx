@@ -25,8 +25,9 @@ import {
   H4,
   DarkDiv,
 } from "./Styles";
+import { HomeProps } from "./types";
 
-export default function Home({ setUser }: any) {
+export default function Home({ setUser }: HomeProps) {
   useEffect(() => {
     const getToken = async () => {
       const token = getCookie("token");
@@ -132,6 +133,7 @@ export const Text = styled.p`
 export const Div = styled.div`
   background-color: #191919;
   position: relative;
+  margin-top: 10%;
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row-reverse;

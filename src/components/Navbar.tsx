@@ -2,9 +2,14 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
-import { LogIn } from "./types";
+import { NavbarProps } from "./types";
 
-const Navbar = ({ setisLoggedIn, user }: any) => {
+const Navbar: React.FC<NavbarProps> = ({
+  setisLoggedIn,
+  user,
+  cart,
+  setCart,
+}) => {
   const [nav, setNav] = useState<Boolean>(false);
   const cartButton = () => {
     setNav(!nav);
@@ -36,11 +41,24 @@ const Navbar = ({ setisLoggedIn, user }: any) => {
         </Nav>
         <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
       </MainCont>
-      {nav && <Cart user={user} />}
+
+      {nav && (
+        <Modal>
+          <Cart user={user} setNav={setNav} cart={cart} setCart={setCart} />
+        </Modal>
+      )}
     </div>
   );
 };
 export default Navbar;
+
+export const Modal = styled.div`
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  height: 100%;
+  top: 15%;
+  width: 100%;
+`;
 const NavText = styled.p`
   letter-spacing: 2px;
   color: #ffffff;
@@ -65,16 +83,26 @@ const Txt = styled.p`
 const Button = styled.button`
   display: flex;
   margin: auto;
-  margin-top: 5%;
 `;
-
 const MainCont = styled.div`
-  padding: 30px;
+  padding: 20px;
   background-color: black;
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  width: 100%;
 `;
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
+  padding: 0 24px;
+  @media (min-width: 1440px) {
+    padding: 0 10%;
+  }
 `;
 const ImgHeight = styled.img``;
-const Img = styled.img``;
+const Img = styled.img`
+  position: fixed;
+  display: flex;
+  margin-left: 80%;
+`;

@@ -2,7 +2,40 @@ export interface Data {
   email: string;
   password: string;
 }
-
+export interface Cart {
+  image: string;
+  name: string;
+  number: number;
+  price: string;
+  userId: string;
+  _id: string;
+}
+export interface CheckoutProps {
+  user: User | undefined;
+  cart: Cart[];
+}
+export interface User {
+  exp: number;
+  iat: number;
+  id: string;
+  image: string;
+  name: string;
+}
+export interface HomeProps {
+  setUser: (n: User | undefined) => void;
+}
+export interface NavbarProps {
+  setisLoggedIn: (n: boolean) => void;
+  user: User | undefined;
+  cart: Cart[];
+  setCart: (n: any) => void;
+}
+export interface CartProps {
+  user: User | undefined;
+  setNav: (n: boolean) => void;
+  cart: Cart[];
+  setCart: (n: User) => void;
+}
 export interface LogIn {
   setisLoggedIn: (n: boolean) => void;
 }
@@ -64,4 +97,5 @@ export interface DetailProps {
   data: ProductType[];
   number: number;
   setNumber: (n: number) => void;
+  user: User | undefined;
 }

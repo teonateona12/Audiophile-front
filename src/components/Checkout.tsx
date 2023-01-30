@@ -1,53 +1,120 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { Cart, CheckoutProps } from "./types";
 
-export default function Checkout() {
+const Checkout: React.FC<CheckoutProps> = ({ cart, user }) => {
+  const result = cart.filter((item: Cart) => item.userId === user?.id);
+  const navigate = useNavigate();
+  const button = () => {
+    navigate("/thankyou");
+  };
   return (
-    <MainCont>
-      <Text>CHECKOUT</Text>
+    <div>
+      <MainCont>
+        <Text>CHECKOUT</Text>
+        <OrangeTxt>Billing details</OrangeTxt>
+        <Form>
+          <Div1>
+            <Div>
+              <Label>Name</Label>
+              <Input placeholder="Alexei Ward"></Input>
+            </Div>
+            <Div>
+              <Label>Email Adress</Label>
+              <Input placeholder="alexei@mail.com"></Input>
+            </Div>
+            <Div>
+              <Label>Phone Number</Label>
+              <Input placeholder="+1 202-555-0136"></Input>
+            </Div>
+          </Div1>
 
-      <OrangeTxt>Billing details</OrangeTxt>
+          <OrangeTxt>shipping info</OrangeTxt>
 
-      <Form>
-        <Div1>
-          <Div>
-            <Label>Name</Label>
-            <Input placeholder="Alexei Ward"></Input>
-          </Div>
-          <Div>
-            <Label>Email Adress</Label>
-            <Input placeholder="alexei@mail.com"></Input>
-          </Div>
-          <Div>
-            <Label>Phone Number</Label>
-            <Input placeholder="+1 202-555-0136"></Input>
-          </Div>
-        </Div1>
+          <Div1>
+            <DivAddress>
+              <Label>Your Address</Label>
+              <Input placeholder="1137 Williams Avenue"></Input>
+            </DivAddress>
+            <Div>
+              <Label>ZIP Code</Label>
+              <Input placeholder="10001"></Input>
+            </Div>
+            <Div>
+              <Label>City</Label>
+              <Input placeholder="New York"></Input>
+            </Div>
+            <Div>
+              <Label>Country</Label>
+              <Input placeholder="United States"></Input>
+            </Div>
+          </Div1>
+        </Form>
+      </MainCont>
 
-        <OrangeTxt>shipping info</OrangeTxt>
+      <Summery>
+        <h1>summary</h1>
 
-        <Div1>
-          <DivAddress>
-            <Label>Your Address</Label>
-            <Input placeholder="1137 Williams Avenue"></Input>
-          </DivAddress>
-          <Div>
-            <Label>ZIP Code</Label>
-            <Input placeholder="10001"></Input>
-          </Div>
-          <Div>
-            <Label>City</Label>
-            <Input placeholder="New York"></Input>
-          </Div>
-          <Div>
-            <Label>Country</Label>
-            <Input placeholder="United States"></Input>
-          </Div>
-        </Div1>
-      </Form>
-    </MainCont>
+        {result?.map((item: Cart) => (
+          <Cont>
+            <ImageName>
+              <Div2>
+                <Image
+                  src={`https://audiophile-r04o.onrender.com/product/${item.image}`}
+                />
+                <div>
+                  <Name>{item.name}</Name>
+                  <p>{`$ ${+item.price * item.number}`}</p>
+                </div>
+              </Div2>
+              <p>{`x${item.number}`}</p>
+            </ImageName>
+          </Cont>
+        ))}
+        <Button onClick={() => button()}>CONTINUE & PAY</Button>
+      </Summery>
+    </div>
   );
-}
+};
+export default Checkout;
+
+const Button = styled.button`
+  background: #d87d4a;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  margin-top: 15%;
+`;
+const Div2 = styled.div`
+  display: flex;
+  gap: 15px;
+`;
+const Image = styled.img`
+  width: 20%;
+  border-radius: 8px;
+`;
+const Cont = styled.div`
+  margin-top: 30px;
+`;
+const ImageName = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+const Name = styled.p`
+  font-size: 13px;
+  font-weight: 700;
+`;
+const Summery = styled.div`
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 8px;
+  margin: 24px;
+  @media (min-width: 1240px) {
+    margin: 10% 10%;
+  }
+`;
 const DivAddress = styled.div`
   width: 90%;
   margin-top: 5%;
@@ -58,16 +125,12 @@ const Div = styled.div`
   @media (min-width: 768px) {
     width: 45%;
   }
-  @media (min-width: 1440px) {
-  }
 `;
 const Div1 = styled.div`
   display: flex;
   flex-wrap: wrap;
   @media (min-width: 768px) {
     justify-content: space-between;
-  }
-  @media (min-width: 1440px) {
   }
 `;
 const Label = styled.label`
@@ -86,12 +149,8 @@ const Input = styled.input`
   background: #ffffff;
   border: 1px solid #cfcfcf;
   border-radius: 8px;
+  margin-top: 10px;
   padding: 18px 0 18px 24px;
-  @media (min-width: 768px) {
-    // width: 40%;
-  }
-  @media (min-width: 1440px) {
-  }
 `;
 const OrangeTxt = styled.h4`
   font-weight: 700;
@@ -107,12 +166,9 @@ const MainCont = styled.div`
   background: #ffffff;
   border-radius: 8px;
   margin: 24px;
-  @media (min-width: 768px) {
-    /* flex-wrap: nowrap;
-    gap: 20px; */
-  }
-  @media (min-width: 1440px) {
-    /* margin: 10% 10%; */
+
+  @media (min-width: 1240px) {
+    margin: 10% 10%;
   }
 `;
 const Text = styled.h1`
