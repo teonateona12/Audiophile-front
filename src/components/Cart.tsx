@@ -3,8 +3,9 @@ import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function Cart() {
+export default function Cart({ user }: any) {
   const [cart, setCart] = useState([]);
+  const result = cart.filter((item: any) => item.userId === user.id);
   useEffect(() => {
     const getCartList = async () => {
       const res = await axios.get("http://localhost:5000/api/carts");
@@ -19,7 +20,7 @@ export default function Cart() {
         <h1>Cart</h1>
         <button>Remove all</button>
       </Div>
-      {cart?.map((item: any) => (
+      {result?.map((item: any) => (
         <Cont>
           <ImageName>
             <Image

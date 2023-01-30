@@ -12,20 +12,25 @@ import { ProductType } from "./components/types";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Checkout from "./components/Checkout";
+import { getCookie } from "react-use-cookie";
 
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState<Boolean>(true);
   const [data, setData] = useState<ProductType[]>([]);
   const [cart, setCart] = useState([]);
+  const [user, setUser] = useState<any>();
   const [number, setNumber] = useState<number>(1);
   const { id } = useParams();
 
   useEffect(() => {
     const getProducts = async () => {
+      const token = getCookie("token");
       try {
-        const response = await axios.get(
-          "https://audiophile-r04o.onrender.com/api/products"
-        );
+        const response = await axios.get("http://localhost:5000/api/products", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
         setData(response.data);
       } catch (error) {
         console.log(error);
@@ -46,8 +51,8 @@ function App() {
           path="/products"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar setisLoggedIn={setisLoggedIn} />
-              <Home />
+              <Navbar setisLoggedIn={setisLoggedIn} user={user} />
+              <Home setUser={setUser} />
               <Footer />
             </Protected>
           }
@@ -56,7 +61,7 @@ function App() {
           path="/products/:id"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar setisLoggedIn={setisLoggedIn} />
+              <Navbar setisLoggedIn={setisLoggedIn} user={user} />
               <Product data={data} />
               <Footer />
             </Protected>
@@ -66,8 +71,13 @@ function App() {
           path="/products/:id/:detail"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar setisLoggedIn={setisLoggedIn} />
-              <Detail data={data} number={number} setNumber={setNumber} />
+              <Navbar setisLoggedIn={setisLoggedIn} user={user} />
+              <Detail
+                data={data}
+                number={number}
+                setNumber={setNumber}
+                user={user}
+              />
               <Footer />
             </Protected>
           }
@@ -76,7 +86,7 @@ function App() {
           path="/checkout"
           element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Navbar setisLoggedIn={setisLoggedIn} />
+              <Navbar setisLoggedIn={setisLoggedIn} user={user} />
               <Checkout />
               <Footer />
             </Protected>

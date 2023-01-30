@@ -26,7 +26,7 @@ import {
   DarkDiv,
 } from "./Styles";
 
-export default function Home() {
+export default function Home({ setUser }: any) {
   useEffect(() => {
     const getToken = async () => {
       const token = getCookie("token");
@@ -36,6 +36,7 @@ export default function Home() {
             authorization: `Bearer ${token}`,
           },
         });
+        setUser(response.data);
       } catch (error) {
         console.log(error);
       }

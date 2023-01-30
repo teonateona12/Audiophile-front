@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Cart from "./Cart";
 import { LogIn } from "./types";
 
-const Navbar = ({ setisLoggedIn }: LogIn) => {
+const Navbar = ({ setisLoggedIn, user }: any) => {
   const [nav, setNav] = useState<Boolean>(false);
   const cartButton = () => {
     setNav(!nav);
@@ -36,7 +36,7 @@ const Navbar = ({ setisLoggedIn }: LogIn) => {
         </Nav>
         <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
       </MainCont>
-      {nav && <Cart />}
+      {nav && <Cart user={user} />}
     </div>
   );
 };
