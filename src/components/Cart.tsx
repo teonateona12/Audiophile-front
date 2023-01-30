@@ -3,10 +3,10 @@ import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
-import { Cart, CartProps } from "./types";
+import { CartType, CartProps } from "./types";
 
 const Cart: React.FC<CartProps> = ({ user, setNav, cart, setCart }) => {
-  const result = cart.filter((item: Cart) => item.userId === user?.id);
+  const result = cart.filter((item: CartType) => item.userId === user?.id);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Cart: React.FC<CartProps> = ({ user, setNav, cart, setCart }) => {
         )}
       </Div>
 
-      {result?.map((item: Cart) => (
+      {result?.map((item: CartType) => (
         <Cont>
           <ImageName>
             <Div2>

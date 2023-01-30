@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
 import { NavbarProps } from "./types";
+import Cookies from "js-cookie";
 
 const Navbar: React.FC<NavbarProps> = ({
   setisLoggedIn,
@@ -13,6 +14,10 @@ const Navbar: React.FC<NavbarProps> = ({
   const [nav, setNav] = useState<Boolean>(false);
   const cartButton = () => {
     setNav(!nav);
+  };
+  const logOut = () => {
+    setisLoggedIn(false);
+    Cookies.remove("token");
   };
   return (
     <div>
@@ -39,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({
             src="https://audiophile-r04o.onrender.com/product/card.svg"
           />
         </Nav>
-        <Button onClick={() => setisLoggedIn(false)}>Log Out</Button>
+        <Button onClick={() => logOut()}>Log Out</Button>
       </MainCont>
 
       {nav && (

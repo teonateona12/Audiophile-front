@@ -2,7 +2,7 @@ export interface Data {
   email: string;
   password: string;
 }
-export interface Cart {
+export interface CartType {
   image: string;
   name: string;
   number: number;
@@ -12,7 +12,7 @@ export interface Cart {
 }
 export interface CheckoutProps {
   user: User | undefined;
-  cart: Cart[];
+  cart: CartType[];
 }
 export interface User {
   exp: number;
@@ -27,21 +27,20 @@ export interface HomeProps {
 export interface NavbarProps {
   setisLoggedIn: (n: boolean) => void;
   user: User | undefined;
-  cart: Cart[];
-  setCart: (n: any) => void;
+  cart: CartType[];
+  setCart: (n: CartType[]) => void;
 }
 export interface CartProps {
   user: User | undefined;
   setNav: (n: boolean) => void;
-  cart: Cart[];
-  setCart: (n: User) => void;
+  cart: CartType[];
+  setCart: (n: CartType[]) => void;
 }
 export interface LogIn {
   setisLoggedIn: (n: boolean) => void;
 }
 export interface ProductProps {
   data: ProductType[];
-  // setisLoggedIn: (n: boolean) => void;
 }
 export interface ProductType {
   id: number;
@@ -87,12 +86,10 @@ export interface AlsoProps {
   image: Imag;
   name: string;
 }
-
 export interface IncludesProps {
   quantity: number;
   item: string;
 }
-
 export interface DetailProps {
   data: ProductType[];
   number: number;

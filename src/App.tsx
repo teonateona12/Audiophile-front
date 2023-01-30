@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Protected from "./components/Protected";
 import Signup from "./components/Signup";
@@ -7,8 +7,7 @@ import Login from "./components/Login";
 import Product from "./components/Product";
 import axios from "axios";
 import Detail from "./components/Detail";
-import { useParams } from "react-router-dom";
-import { Cart, ProductType, User } from "./components/types";
+import { CartType, ProductType, User } from "./components/types";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Checkout from "./components/Checkout";
@@ -19,14 +18,18 @@ import Verify from "./components/Verify";
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState<Boolean>(true);
   const [data, setData] = useState<ProductType[]>([]);
-  const [cart, setCart] = useState<Cart[]>([]);
+  const [cart, setCart] = useState<CartType[]>([]);
   const [user, setUser] = useState<User>();
   const [number, setNumber] = useState<number>(1);
   const { id } = useParams();
-  console.log(user);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getProducts = async () => {
       const token = getCookie("token");
+      if (token.length === 0) {
+        navigate("/");
+      }
       try {
         const response = await axios.get("http://localhost:5000/api/products", {
           headers: {

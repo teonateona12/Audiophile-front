@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Cart, CheckoutProps } from "./types";
+import { CartType, CheckoutProps } from "./types";
 
 const Checkout: React.FC<CheckoutProps> = ({ cart, user }) => {
-  const result = cart.filter((item: Cart) => item.userId === user?.id);
+  const result = cart.filter((item: CartType) => item.userId === user?.id);
   const navigate = useNavigate();
   const button = () => {
     navigate("/thankyou");
   };
+
   return (
     <div>
       <MainCont>
@@ -56,7 +57,7 @@ const Checkout: React.FC<CheckoutProps> = ({ cart, user }) => {
       <Summery>
         <h1>summary</h1>
 
-        {result?.map((item: Cart) => (
+        {result?.map((item: CartType) => (
           <Cont>
             <ImageName>
               <Div2>
@@ -111,6 +112,10 @@ const Summery = styled.div`
   background: #ffffff;
   border-radius: 8px;
   margin: 24px;
+  margin-top: 30%;
+  @media (min-width: 680px) {
+    margin-top: 20%;
+  }
   @media (min-width: 1240px) {
     margin: 10% 10%;
   }
@@ -166,7 +171,10 @@ const MainCont = styled.div`
   background: #ffffff;
   border-radius: 8px;
   margin: 24px;
-
+  margin-top: 30%;
+  @media (min-width: 680px) {
+    margin-top: 20%;
+  }
   @media (min-width: 1240px) {
     margin: 10% 10%;
   }
