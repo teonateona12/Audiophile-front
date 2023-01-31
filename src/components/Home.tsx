@@ -32,11 +32,14 @@ export default function Home({ setUser }: HomeProps) {
     const getToken = async () => {
       const token = getCookie("token");
       try {
-        const response = await axios.get("http://localhost:5000/api/auth/me", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://audiophile-r04o.onrender.com/api/auth/me",
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setUser(response.data);
       } catch (error) {
         console.log(error);

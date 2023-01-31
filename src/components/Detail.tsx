@@ -10,13 +10,16 @@ const Detail: React.FC<DetailProps> = ({ data, number, setNumber, user }) => {
   const { detail } = useParams();
   const result = data.find((item: ProductType) => item.slug === detail);
   const cartButton = async () => {
-    const res = await axios.post("http://localhost:5000/api/cart", {
-      name: result?.name,
-      number,
-      price: result?.price,
-      image: result?.image.mobile,
-      userId: user?.id,
-    });
+    const res = await axios.post(
+      "https://audiophile-r04o.onrender.com/api/cart",
+      {
+        name: result?.name,
+        number,
+        price: result?.price,
+        image: result?.image.mobile,
+        userId: user?.id,
+      }
+    );
   };
 
   const increase = () => {

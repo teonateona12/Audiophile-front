@@ -14,7 +14,7 @@ const AlsoLike: React.FC<PropsType> = ({ data }) => {
         {result?.others.map((item: AlsoProps) => (
           <div>
             <Img
-              src={`https://audiophile-r04o.onrender.com/product/${item.image.mobile}`}
+              src={`https://audiophile-r04o.onrender.com/${item.image.mobile}`}
             />
             <Name>{item.name}</Name>
             <Link to={`/products/headphones/${item.slug}`}>

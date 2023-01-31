@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { LogIn } from "./types";
 import styled from "styled-components";
-
+import { useState } from "react";
 import {
   Button,
   Input,
@@ -17,7 +17,7 @@ import {
 
 export default function Signup({ setisLoggedIn }: LogIn) {
   const navigate = useNavigate();
-
+  const [check, setCheck] = useState("");
   const {
     register,
     handleSubmit,
@@ -30,14 +30,14 @@ export default function Signup({ setisLoggedIn }: LogIn) {
     formData.append("email", data.email);
     formData.append("name", data.name);
     formData.append("password", data.password);
-    formData.append("backLink", "http://localhost:3000/verify");
+    formData.append("backLink", "https://audiophile-front.onrender.com/verify");
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/signup",
+        "https://audiophile-r04o.onrender.com/api/signup",
         formData
       );
-      navigate("/verify");
+      setCheck(`Check your email ${data.name}`);
     } catch (error) {
       console.log(error);
     }
@@ -74,10 +74,14 @@ export default function Signup({ setisLoggedIn }: LogIn) {
           </ButtonSignLog>
         </Container>
       </Form>
+      <Check>{check}</Check>
     </MainCont>
   );
 }
-
+const Check = styled.h4`
+  color: red;
+  margin: 5%;
+`;
 export const MainCont = styled.div`
   background-color: white;
   margin: 20% 10%;

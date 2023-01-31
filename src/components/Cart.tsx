@@ -11,13 +11,17 @@ const Cart: React.FC<CartProps> = ({ user, setNav, cart, setCart }) => {
 
   useEffect(() => {
     const getCartList = async () => {
-      const res = await axios.get("http://localhost:5000/api/carts");
+      const res = await axios.get(
+        "https://audiophile-r04o.onrender.com/api/carts"
+      );
       setCart(res.data);
     };
     getCartList();
   }, [cart]);
   const removeFunc = async (id: string | undefined) => {
-    const res = await axios.delete(`http://localhost:5000/api/carts/${id}`);
+    const res = await axios.delete(
+      `https://audiophile-r04o.onrender.com/api/carts/${id}`
+    );
   };
   const checkout = () => {
     setNav(false);
