@@ -31,11 +31,14 @@ function App() {
         navigate("/");
       }
       try {
-        const response = await axios.get("http://localhost:5000/api/products", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://audiophile-r04o.onrender.com/api/products",
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setData(response.data);
       } catch (error) {
         console.log(error);
