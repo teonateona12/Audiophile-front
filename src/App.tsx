@@ -40,7 +40,7 @@ function App() {
         }
         try {
           const response = await axios.get(
-            "http://localhost:5000/api/products",
+            "https://audiophile-r04o.onrender.com/api/products",
             {
               headers: {
                 authorization: `Bearer ${token}`,
