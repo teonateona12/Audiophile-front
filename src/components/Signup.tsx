@@ -30,10 +30,7 @@ export default function Signup({ setisLoggedIn }: LogIn) {
     formData.append("email", data.email);
     formData.append("name", data.name);
     formData.append("password", data.password);
-    formData.append(
-      "backLink",
-      "https://audiophile-front.firebaseapp.com/verify"
-    );
+    formData.append("backLink", "https://audiophile-front.onrender.com/verify");
 
     try {
       const res = await axios.post(
