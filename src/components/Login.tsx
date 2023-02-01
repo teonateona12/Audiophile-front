@@ -20,13 +20,10 @@ export default function Login({ setisLoggedIn }: LogIn) {
   const login = async (data: any) => {
     const { email, password } = data;
     try {
-      const res = await axios.post(
-        "https://audiophile-r04o.onrender.com/api/login",
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
       setCookie("token", res.data.token, {
         days: 1,
       });

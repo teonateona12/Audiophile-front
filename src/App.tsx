@@ -1,4 +1,10 @@
-import { Routes, Route, useParams, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useParams,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Protected from "./components/Protected";
 import Signup from "./components/Signup";
@@ -23,29 +29,33 @@ function App() {
   const [number, setNumber] = useState<number>(1);
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const token = getCookie("token");
 
   useEffect(() => {
     const getProducts = async () => {
-      const token = getCookie("token");
-      if (token.length === 0) {
-        navigate("/");
-      }
-      try {
-        const response = await axios.get(
-          "https://audiophile-r04o.onrender.com/api/products",
-          {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setData(response.data);
-      } catch (error) {
-        console.log(error);
+      if (location.pathname !== "/verify") {
+        if (token.length === 0) {
+          navigate("/");
+        }
+        try {
+          const response = await axios.get(
+            "http://localhost:5000/api/products",
+            {
+              headers: {
+                authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setData(response.data);
+        } catch (error) {
+          console.log(error);
+        }
       }
     };
     getProducts();
   }, []);
+
   return (
     <div>
       <Routes>
