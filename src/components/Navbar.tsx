@@ -92,10 +92,6 @@ const Button = styled.button`
 const MainCont = styled.div`
   padding: 20px;
   background-color: black;
-  position: fixed;
-  opacity: 1;
-  top: 0;
-  width: 100%;
 `;
 const Nav = styled.nav`
   display: flex;

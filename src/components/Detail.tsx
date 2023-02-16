@@ -10,7 +10,6 @@ const Detail: React.FC<DetailProps> = ({ data, number, setNumber, user }) => {
   const { detail } = useParams();
   const result = data.find((item: ProductType) => item.slug === detail);
   const cartButton = async () => {
-    console.log(1);
     const data = {
       name: result?.name,
       number,
@@ -18,7 +17,6 @@ const Detail: React.FC<DetailProps> = ({ data, number, setNumber, user }) => {
       image: result?.image.mobile,
       userId: user?.id,
     };
-    console.log(data);
     const res = await axios.post(
       "https://audiophile-r04o.onrender.com/api/cart",
       data

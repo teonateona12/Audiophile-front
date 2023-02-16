@@ -116,7 +116,6 @@ export const Text = styled.p`
 export const Div = styled.div`
   background-color: #191919;
   position: relative;
-  margin-top: 10%;
   @media (min-width: 1440px) {
     display: flex;
     flex-direction: row-reverse;
