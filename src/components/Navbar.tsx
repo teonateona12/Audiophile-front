@@ -59,9 +59,7 @@ export default Navbar;
 
 export const Modal = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
   height: 100%;
-  top: 15%;
   width: 100%;
 `;
 const NavText = styled.p`
